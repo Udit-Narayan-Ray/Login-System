@@ -11,7 +11,7 @@ require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/SMTP.php';
 
-$mail=new PHPMailer(true);
+$mail=new PHPMailer(true);//here it may generate false error so don't pay attention to it
 
 $rmail=$_POST['rmail'];
 
