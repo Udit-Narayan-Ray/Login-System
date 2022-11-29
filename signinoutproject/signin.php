@@ -11,12 +11,12 @@
     <?php
         include 'con.php';
         session_start();
-        if(isset($_GET['token']))//this get method is used to fetch the value from server that is already sent to server by (? key=value) ways
+        if(isset($_GET['token']))
         {
             try
             {
                 $tok=$_GET['token'];
-                // echo $tok;
+                
                 $u="update register set status='active' where token='$tok' and status='inactive'";
                $query=mysqli_query($con,$u);
                 if($query)
