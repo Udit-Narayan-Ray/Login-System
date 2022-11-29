@@ -11,9 +11,7 @@ if(isset($_POST['changep']))
         $email=$_SESSION['email'];
         $np=$_POST['newp'];
         $cnp=$_POST['cnewp'];
-        // echo '$email';
-        // echo $_SESSION['email'];
-        // print_r($email);
+      
         $newp=password_hash($np,PASSWORD_BCRYPT);
         $cnewp=password_hash($cnp,PASSWORD_BCRYPT);
        
