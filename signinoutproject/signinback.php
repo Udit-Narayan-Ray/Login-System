@@ -23,9 +23,9 @@ if(isset($_POST['signin']))
         if($passv!=$pass)
         {
             
-            // if(isset($_SESSION['token']))
-            // {
-                // $to=$_SESSION['token'];
+            if(isset($_SESSION['token']))
+            {
+                $to=$_SESSION['token'];
 
                if($pass!=$token)
                {
@@ -40,12 +40,12 @@ if(isset($_POST['signin']))
          
                     echo '<script>location.replace("signout.php")</script>';
                 }            
-            // }
-            // else
-            // {
-            //     echo '<script>alert("Wrong Credential")</script>';
-            //     echo '<script>location.replace("signin.php")</script>';
-            // }
+            }
+            else
+            {
+                echo '<script>alert("Wrong Credential")</script>';
+                echo '<script>location.replace("signin.php")</script>';
+            }
         }
         else
         {
