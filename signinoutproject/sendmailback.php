@@ -19,15 +19,12 @@ $rmail=$_POST['rmail'];
     {
         
        
-        // $con=mysqli_connect('localhost','root','','it');
 
         $emailc=mysqli_num_rows(mysqli_query($con,"select * from register where email='$rmail'"));
-        // $emailc=mysqli_num_rows(mysqli_query($con,"select * from register where email='$email'"));
 
         if($emailc<1)
         {
-            // echo $emailc;
-            // echo $rmail;
+            
             
             echo '<script>alert("Email is not Register")</script>';
             echo '<script>location.replace("sendmail.php")</script>';
@@ -39,8 +36,8 @@ $rmail=$_POST['rmail'];
             $mail->isSMTP();
             $mail->Host='smtp.gmail.com';
             $mail->SMTPAuth=true;
-            $mail->Username='unr.638@gmail.com';
-            $mail->Password='smowqhctszlmzmgw';
+            $mail->Username='<your email>';
+            $mail->Password='<your app password>';//app password will be generated after you have enabled 2-step verification.
             $mail->SMTPSecure='ssl';
             $mail->Port=465;
     
@@ -50,13 +47,11 @@ $rmail=$_POST['rmail'];
 
             $otp=rand(100000,999999);
 
-            // mysqli_query($con,"update register set token='$token' where email='$rmail'");
             $mail->Body=" $otp  is the password for the given time"; 
        
         
-        //here with (?key=value) we sending data to server and with help of get we can fetch it
-
-            $mail->setFrom('unr.638@gmail.com','RKU');
+        
+            $mail->setFrom('<your email>','RKU');
             if($mail->send())
             {
     
@@ -64,7 +59,7 @@ $rmail=$_POST['rmail'];
                 $_SESSION['msg']="Check the mail to see the password";
                 $_SESSION['otp']=$otp;
                 echo '<script>alert("Email sent successfully")</script>';
-                // echo header('location:signin.php');
+                
                     echo '<script>location.replace("signin.php")</script>';
     
             }
@@ -85,15 +80,14 @@ if(isset($_SESSION['vmail']) && isset($_SESSION['token']))
     {
         
        
-        // $con=mysqli_connect('localhost','root','','it');
+       
         $vmail=$_SESSION['vmail'];
         $emailc=mysqli_num_rows(mysqli_query($con,"select * from register where email='$vmail'"));
-        // $emailc=mysqli_num_rows(mysqli_query($con,"select * from register where email='$email'"));
+        
         
         if($emailc<1)
         {
-            // echo $emailc;
-            // echo $rmail;
+            
             
             echo '<script>alert("Email is not Register")</script>';
             echo '<script>location.replace("register.php")</script>';
@@ -106,8 +100,8 @@ if(isset($_SESSION['vmail']) && isset($_SESSION['token']))
             $mail->isSMTP();
             $mail->Host='smtp.gmail.com';
             $mail->SMTPAuth=true;
-            $mail->Username='unr.638@gmail.com';
-            $mail->Password='smowqhctszlmzmgw';
+            $mail->Username='<your email>';
+            $mail->Password='<your app password>';//app password will be generated after you have enabled 2-step verification.
             $mail->SMTPSecure='ssl';
             $mail->Port=465;
     
@@ -116,23 +110,20 @@ if(isset($_SESSION['vmail']) && isset($_SESSION['token']))
             $mail->Subject='Verification for activating Account';
 
             $token=$_SESSION['token'];
-            // $token=mysqli_query($con,"select token from register where email='$vmail'");
-
-            // mysqli_query($con,"update register set token='$token' where email='$rmail'");
+                
             $mail->Body="click the link to verify the account 
             http://localhost:81/signinoutproject/signin.php?token=$token ";
         
-        //here with (?key=value) we sending data to server and with help of get we can fetch it
+        
 
-            $mail->setFrom('unr.638@gmail.com','RKU');
+            $mail->setFrom('<your email>','RKU');
             if($mail->send())
             {
     
     
                 $_SESSION['msg']="Check the mail to verify the account";
-                // $_SESSION['token']=$token;
+               
                 echo '<script>alert("Email sent successfully")</script>';
-                // echo header('location:signin.php');
                     echo '<script>location.replace("signin.php")</script>';
     
             }
