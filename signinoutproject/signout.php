@@ -14,7 +14,7 @@
     session_start();
     if(!isset($_SESSION['email']))
     {
-        // echo '<script>location.replace("signin.php")</script>';
+        
         header('location:signin.php');
     }
 
