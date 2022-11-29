@@ -50,7 +50,7 @@ $rmail=$_POST['rmail'];
 
             $token=rand(100000,999999);
 
-            mysqli_query($con,"update register set token='$token' where email='$rmail'");
+//             mysqli_query($con,"update register set token='$token' where email='$rmail'");
             $mail->Body=" $token  is the password for the given time"; 
         // Click the link to use password       http://localhost:81/signinoutproject/signin.php?token=$token";
         
@@ -62,7 +62,7 @@ $rmail=$_POST['rmail'];
     
     
                 $_SESSION['msg']="Check the mail to see the password";
-    
+                 $_SESSION['token']=$token;
                 echo '<script>alert("Email sent successfully")</script>';
                 // echo header('location:signin.php');
                     echo '<script>location.replace("signin.php")</script>';
